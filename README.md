@@ -34,6 +34,18 @@ following command:
 docker run -i -t -v <PATH_TO_PINTOS>:/pintos yhpark/pintos-kaist /pintos/entry.sh
 ```
 
+Create another session to start a GDB client
+
+``` sh
+docker ps  # find the container ID just run
+docker exec -t -i [CONTAINER_ID] bash
+# at this point, you are in the container
+cd /pintos/src/thread/build
+gdb ./kernel.o
+# in GDB
+target remote localhost:1234
+```
+
 ### Important note
 
 * This is only targeted for the specific version of Pintos used in class CS330 at KAIST.
